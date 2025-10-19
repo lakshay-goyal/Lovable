@@ -4,7 +4,6 @@
 import React, { useState } from "react";
 import { IconCheck, IconInfoCircle, IconPlus } from "@tabler/icons-react"
 import { ArrowUpIcon, Search, PlusIcon, ArrowRight, Shapes } from "lucide-react"
-import { Navbar, NavBody, NavbarLogo, NavItems, NavbarButton, MobileNav, MobileNavHeader, MobileNavToggle, MobileNavMenu } from "@/components/ui/resizable-navbar"
 import { cn } from "../lib/utils"
 import { Spotlight } from "@/components/ui/spotlight"
 import { Cover } from "@/components/ui/cover"
@@ -26,14 +25,7 @@ import "./globals.css"
 import { motion } from "framer-motion"
 import { toast } from "sonner";
 import ProductsList from "@/components/ProductsList";
-
-
-const navItems = [
-  { name: "Home", link: "/" },
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Contact", link: "#contact" },
-];
+import NavigationBar from "@/components/NavigationBar";
 
 export default function Page() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,120 +43,12 @@ export default function Page() {
 
   return (
     <div>
-      <div>
-        <Navbar>
-          {/* Desktop Navbar */}
-          <NavBody>
-            <NavbarLogo />
-            <NavItems items={navItems} />
-            <div className="flex items-center gap-3">
-              <NavbarButton variant="secondary" href="#login">
-                Sign In
-              </NavbarButton>
-              <NavbarButton variant="dark" href="#signup">
-                Sign Up
-              </NavbarButton>
-            </div>
-          </NavBody>
-
-          {/* Mobile Navbar */}
-          {/* <MobileNav>
-            <MobileNavHeader>
-              <NavbarLogo />
-              <MobileNavToggle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
-            </MobileNavHeader>
-
-            <MobileNavMenu isOpen={isOpen} onClose={() => setIsOpen(false)}>
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.link}
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full rounded-lg px-4 py-2 text-base font-medium text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
-                >
-                  {item.name}
-                </a>
-              ))}
-              <div className="mt-4 flex flex-col gap-2 w-full">
-                <NavbarButton variant="secondary" href="#login">
-                  Login
-                </NavbarButton>
-                <NavbarButton variant="dark" href="#signup">
-                  Sign Up
-                </NavbarButton>
-              </div>
-            </MobileNavMenu>
-          </MobileNav> */}
-        </Navbar>
-      </div>
 
       {/* <Button variant={"destructive"}>Hello World</Button> */}
       {/* {user?.name ?? "No user added yet"} */}
 
 
-      {/* <div>
-        <h1 className="text-4xl md:text-4xl lg:text-6xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-neutral-700 to-neutral-700 dark:from-neutral-800 dark:via-white dark:to-white">
-          Build amazing websites <br /> at <Cover>warp speed</Cover>
-        </h1>
-      </div> */}
-
-      {/* <div className="relative flex h-screen w-full overflow-hidden rounded-md bg-black/[0.96] antialiased md:items-center md:justify-center">
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-0 [background-size:40px_40px] select-none",
-            "[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]",
-          )}
-        />
-
-        <Spotlight
-          className="-top-40 left-0 md:-top-20 md:left-60"
-          fill="none"
-        />
-        <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">
-          <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl">
-            Spotlight <br />is the <Cover>warp speed</Cover>
-          </h1>
-          <div className="flex max-w-xl justify-center">
-            <InputGroup>
-              <InputGroupTextarea placeholder="Ask, Search or Chat..." />
-              <InputGroupAddon align="block-end">
-                <InputGroupButton
-                  variant="outline"
-                  className="rounded-full"
-                  size="icon-xs"
-                >
-                  <IconPlus />
-                </InputGroupButton>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <InputGroupButton variant="ghost">Auto</InputGroupButton>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    side="top"
-                    align="start"
-                    className="[--radius:0.95rem]"
-                  >
-                    <DropdownMenuItem>Auto</DropdownMenuItem>
-                    <DropdownMenuItem>Agent</DropdownMenuItem>
-                    <DropdownMenuItem>Manual</DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <InputGroupText className="ml-auto">52% used</InputGroupText>
-                <Separator orientation="vertical" className="!h-4" />
-                <InputGroupButton
-                  variant="default"
-                  className="rounded-full"
-                  size="icon-xs"
-                  disabled
-                >
-                  <ArrowUpIcon />
-                  <span className="sr-only">Send</span>
-                </InputGroupButton>
-              </InputGroupAddon>
-            </InputGroup>
-          </div>
-        </div>
-      </div> */}
+      <NavigationBar />
       <div className="relative flex h-screen w-full overflow-hidden bg-black/[0.96] antialiased items-center justify-center">
         {/* === Animated Background Grid === */}
         <motion.div
@@ -273,7 +157,7 @@ export default function Page() {
       </div>
 
       {/* History */}
-          <ProductsList></ProductsList>
+      <ProductsList></ProductsList>
     </div>
   );
 }
